@@ -14,7 +14,7 @@
 # define FRACTOL_BONUS_H
 
 # include <math.h>
-# include "../mlx/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -79,6 +79,7 @@ t_img		init_img(t_vars *vars);
 t_vars		init_julia(void);
 t_vars		init_mandelbrot(void);
 
+void		bright(t_img *img);
 void		julia_main(void);
 void		julia_set(t_vars *vars);
 double		julia(t_complex z, t_vars *vars);
@@ -94,8 +95,10 @@ double		ft_abs_complex(t_complex c);
 int			ft_strcmp(char *s1, char *s2);
 int			ft_strlen(const char *str);
 
-int			mouse_click_hook(int button, int x, int y, t_vars *vars);
+int			mouse_button_hook(int button, int x, int y, t_vars *vars);
 int			mouse_move_hook(t_vars *vars);
+void		scroll(int button, t_vars *vars, t_dir dir);
+void		render(t_vars *vars);
 
 int			key_press(int keycode, t_vars *v);
 

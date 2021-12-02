@@ -17,6 +17,8 @@ int	key_press(int keycode, t_vars *v)
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(v->mlx, v->win);
+		mlx_destroy_display(v->mlx);
+		free(v->mlx);
 		exit(0);
 	}
 	return (0);

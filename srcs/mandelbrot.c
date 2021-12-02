@@ -46,10 +46,7 @@ void	mandelbrot_set(t_vars *v)
 			c.i = (img.y / (double)W_HEIGHT) * (v->i_end - v->i_start)
 				* v->zoom + v->i_start * v->zoom;
 			img.n = ft_mandelbrot(c);
-			img.bright = img.n / (double)MAX_ITER * 10;
-			img.bright = sqrt(img.bright) * 255;
-			if (img.n == MAX_ITER)
-				img.bright = 0;
+			bright(&img);
 			img.data[(W_WIDTH * (int)img.y) + (int)img.x]
 				= img.bright * 256 * 256 + img.bright * 256 + img.bright;
 			img.y++;
@@ -66,7 +63,7 @@ void	mandelbrot_main(void)
 
 	vars = init_mandelbrot();
 	mandelbrot_set(&vars);
-	mlx_hook(vars.win, 4, 1L << 2, mouse_click_hook, &vars);
+	mlx_hook(vars.win, 4, 1L << 2, mouse_button_hook, &vars);
 	mlx_hook(vars.win, 2, 1L << 0, key_press, &vars);
 	mlx_loop(vars.mlx);
 }
