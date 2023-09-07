@@ -1,1 +1,1 @@
-# fractol_linux
+# Computer Graphics Fractals
